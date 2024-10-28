@@ -1,0 +1,44 @@
+
+    <div class="tool-layout">
+        <ui5-shellbar primary-title="Chat Bot">
+            <img slot="logo" src="https://sap.github.io/ui5-webcomponents/images/sap-logo-svg.svg" />
+            <ui5-button icon="menu" slot="startButton" id="toggle" (click)="toggleSidenav()"></ui5-button>
+            <ui5-avatar slot="profile">
+                <img src="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_5.png" />
+            </ui5-avatar>
+            <ui5-shellbar-item icon="edit" text="New chat" title="New chat" (click)="createNewChatFolder()"></ui5-shellbar-item>
+            <ui5-shellbar-item icon="action-settings" text="Settings" title="Settings"></ui5-shellbar-item>
+        </ui5-shellbar>
+        <ui5-side-navigation [attr.collapsed]="isCollapsed ? true : null">
+            <ui5-side-navigation-item
+                *ngFor="let folder of chatFolders; let i = index"
+                [text]="folder.name"
+                icon="edit"
+                (click)="openFolder(i)">
+            </ui5-side-navigation-item>
+			<ui5-side-navigation-item slot="fixedItems" text="History" icon="history">
+			</ui5-side-navigation-item>
+        </ui5-side-navigation>
+        <div class="content">
+            <div class="message-field">
+                <div *ngIf="chatFolders[currentFolderIndex].messages.length === 0 && !isTyping" class="no-messages">
+                    Задавайте вопросы нашему боту
+                </div>
+                <div *ngIf="isTyping" class="typing-indicator">Bot думает...</div>
+                <div *ngFor="let message of chatFolders[currentFolderIndex].messages; let i = index" 
+                    class="message-container"
+                    [ngClass]="message.type">
+                    <div class="message">
+                        {{ message.text }}
+                    </div>
+                    <ui5-button class="edit-button" icon="edit" *ngIf="message.type === 'sent'" (click)="editMessage(i)"></ui5-button>
+                </div>
+            </div>
+            <div class="input-field">
+                <div class="input-field-child">
+                    <ui5-textarea [(ngModel)]="messageInput" growing growing-max-rows="5" placeholder="Enter new rows..."></ui5-textarea>
+                    <ui5-button icon="paper-plane" (click)="sendMessage()"></ui5-button>
+                </div>
+            </div>
+        </div>
+    </div>

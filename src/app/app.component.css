@@ -1,0 +1,19 @@
+/* Основная структура для размещения элементов */
+.layout {
+    display: flex;
+    height: 100vh; /* Высота на весь экран */
+  }
+
+  .side-navigation {
+    width: 250px; /* Ширина сайдбара, можно настроить по необходимости */
+    z-index: 1;
+    margin: 0;
+    order: 1;
+  }
+  
+  .shell-bar-with-input {
+    flex-grow: 1;
+    order: 2;
+    position: relative;
+  }
+  

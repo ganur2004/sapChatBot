@@ -1,0 +1,121 @@
+ui5-side-navigation {
+    height: 600px;
+}
+
+ui5-shellbar::part(root) {
+    padding-inline-start: 0.75rem;
+    padding-inline-end: 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow:
+        0 0 0.125rem 0 color-mix(in srgb, var(--sapContent_ShadowColor) 16%, transparent),
+        0 0.5rem 1rem 0 color-mix(in srgb, var(--sapContent_ShadowColor) 16%, transparent);
+}
+
+.tool-layout {
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    background: color-mix(in srgb, black 4%, var(--sapBackgroundColor));
+    display: grid;
+    gap: 0.5rem;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+}
+
+ui5-shellbar {
+    grid-column: 1 / span 2;
+    grid-row: 1 / 2;
+}
+
+.content {
+    position: relative;
+    background: var(--sapBackgroundColor);
+    border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow:
+        0 0 0.125rem 0 color-mix(in srgb, var(--sapContent_ShadowColor) 16%, transparent),
+        0 0.5rem 1rem 0 color-mix(in srgb, var(--sapContent_ShadowColor) 16%, transparent);
+        display: flex; /* Добавлено */
+        flex-direction: column; /* Устанавливаем вертикальное направление */
+        height: 100%; /* Убедитесь, что родительский элемент имеет высоту */
+}
+
+.message-field {
+    flex-grow: 1; /* Занимает оставшееся пространство */
+    overflow-y: auto; /* Прокрутка для сообщений */
+    height: 0; /* Убираем фиксированную высоту */
+    padding: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column; /* Выстраиваем кнопки и сообщения по вертикали */
+    align-items: flex-start; /* Выравниваем по левому краю */
+    margin-bottom: 1rem; /* Добавляем отступ между сообщениями */
+    max-width: 70%; /* Ограничение ширины сообщения */
+}
+
+.message {
+    margin: 0.2rem 0; /* Отступы между сообщениями */
+    padding: 0.5rem 1rem; /* Отступы внутри сообщения */
+    border-radius: 0.5rem; /* Скругленные углы */
+    word-wrap: break-word; /* Перенос слов */
+}
+
+.sent {
+    align-self: flex-end;
+}
+
+.sent .message {
+    background-color: #007aff; /* Цвет фона для отправленных сообщений */
+    color: white; /* Цвет текста для отправленных сообщений */
+    align-self: flex-end; /* Выравнивание отправленных сообщений вправо */
+}
+
+.received .message {
+    background-color: #e0e0e0; /* Цвет фона для полученных сообщений */
+    color: black; /* Цвет текста для полученных сообщений */
+    align-self: flex-start; /* Выравнивание полученных сообщений влево */
+}
+
+.input-field {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: end;
+
+}
+
+.input-field-child {
+    display: flex;
+    width: 80%;
+    align-items: center;
+}
+
+ui5-button {
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+}
+
+.typing-indicator {
+    color: gray;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.no-messages {
+    text-align: center;
+    color: gray;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.edit-button { 
+    height: 30px;
+    width: 30px;
+    align-self: flex-start; /* Кнопка будет выровнена по левому краю */
+    margin-top: 0;
+    margin-left: 0;
+    background: transparent;
+    border: none;
+}
