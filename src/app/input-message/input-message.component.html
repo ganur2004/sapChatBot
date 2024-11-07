@@ -4,12 +4,12 @@
             <img slot="logo" src="https://sap.github.io/ui5-webcomponents/images/sap-logo-svg.svg" />
             <ui5-button icon="menu" slot="startButton" id="toggle" (click)="toggleSidenav()"></ui5-button>
             <ui5-avatar slot="profile">
-                <img src="https://sap.github.io/ui5-webcomponents/images/avatars/woman_avatar_5.png" />
+                <img src="https://sap.github.io/ui5-webcomponents/images/avatars/man_avatar_2.png" />
             </ui5-avatar>
             <ui5-shellbar-item icon="edit" text="New chat" title="New chat" (click)="createNewChatFolder()"></ui5-shellbar-item>
             <ui5-shellbar-item icon="action-settings" text="Settings" title="Settings"></ui5-shellbar-item>
         </ui5-shellbar>
-        <ui5-side-navigation [attr.collapsed]="isCollapsed ? true : null">
+        <!-- <ui5-side-navigation [attr.collapsed]="isCollapsed ? true : null">
             <ui5-side-navigation-item
                 *ngFor="let folder of chatFolders; let i = index"
                 [text]="folder.name"
@@ -18,7 +18,7 @@
             </ui5-side-navigation-item>
 			<ui5-side-navigation-item slot="fixedItems" text="History" icon="history">
 			</ui5-side-navigation-item>
-        </ui5-side-navigation>
+        </ui5-side-navigation> -->
         <div class="content">
             <div class="message-field">
                 <div *ngIf="chatFolders[currentFolderIndex].messages.length === 0 && !isTyping" class="no-messages">

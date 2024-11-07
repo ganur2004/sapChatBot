@@ -14,10 +14,13 @@ ui5-shellbar::part(root) {
 .tool-layout {
     padding: 0.5rem 0.5rem 0 0.5rem;
     background: color-mix(in srgb, black 4%, var(--sapBackgroundColor));
-    display: grid;
+    /* display: grid; */
     gap: 0.5rem;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: auto 1fr;
+    /* grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr; */
+    display: flex;
+    flex-direction: column;
+    height: 97vh;
 }
 
 ui5-shellbar {
@@ -26,6 +29,7 @@ ui5-shellbar {
 }
 
 .content {
+    height: 100%;
     position: relative;
     background: var(--sapBackgroundColor);
     border-radius: 0.5rem 0.5rem 0 0;
