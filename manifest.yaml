@@ -1,0 +1,12 @@
+---
+applications:
+  - name: sap_support_ui5
+    memory: 1024MB
+    path: ./
+    disk_quota: 1024M
+    buildpacks:
+      - nodejs_buildpack
+    random-route: true
+    commands:
+      - npm install  # Устанавливаем зависимости
+      - ng serve
