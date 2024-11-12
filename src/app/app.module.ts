@@ -4,7 +4,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InputMessageComponent } from './input-message/input-message.component';
-import { FormsModule } from '@angular/forms'; // Импортируем FormsModule
+import { FormsModule } from '@angular/forms';
 // UI5 Web Components For Angular
 import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { LabelComponent } from '@ui5/webcomponents-ngx/main/label';
