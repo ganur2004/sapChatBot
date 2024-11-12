@@ -1,0 +1,7 @@
+{
+  "/find_similar": {
+    "target": "https://sap_support-reliable-turtle-xp.cfapps.eu10-005.hana.ondemand.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

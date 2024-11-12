@@ -10,6 +10,7 @@ import { Ui5WebcomponentsModule } from '@ui5/webcomponents-ngx';
 import { LabelComponent } from '@ui5/webcomponents-ngx/main/label';
 import { ButtonComponent } from '@ui5/webcomponents-ngx/main/button';
 import { InputComponent } from '@ui5/webcomponents-ngx/main/input';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { InputComponent } from '@ui5/webcomponents-ngx/main/input';
     LabelComponent,
     InputComponent,
     ButtonComponent,
-    Ui5WebcomponentsModule
+    Ui5WebcomponentsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
