@@ -33,7 +33,8 @@ export class ApiServiceService {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           });
-          const body = JSON.stringify({ text });
+          const threshold = 0.7;
+          const body = JSON.stringify({ text, threshold });
 
           this.http.post("/find_similar", body, { headers }).subscribe(
             response => observer.next(response),

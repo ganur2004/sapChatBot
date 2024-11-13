@@ -33,6 +33,7 @@ import {ApiServiceService} from '../services/api-service.service';
 })
 export class InputMessageComponent implements OnInit {
   isCollapsed = false;
+  isLink: boolean = false
   chatFolders: ChatFolder[] = [
     { name: 'New chat', messages: [] },
   ];
@@ -60,7 +61,8 @@ export class InputMessageComponent implements OnInit {
       } else {
         this.chatFolders[this.currentFolderIndex].messages.unshift({
           text: this.messageInput,
-          type: 'sent'
+          type: 'sent',
+          isLink: this.isLink,
         });
       }
 
@@ -69,10 +71,32 @@ export class InputMessageComponent implements OnInit {
       this.apiService.sendRequest(this.messageInput).subscribe(
         response => {
           console.log(response);
-          this.chatFolders[this.currentFolderIndex].messages.unshift({
-            text: response.answer,
-            type: 'received'
-          });
+          const answer = response.answer;
+
+          let message: Message = {
+            text: '',      // Начальное значение
+            type: 'received',  // Тип по умолчанию, например, 'received'
+            isLink: false,     // Флаг по умолчанию
+          };
+          if (typeof answer === 'string') {
+            const isLink = /^https?:\/\//.test(answer);
+
+            if (isLink) {
+              message = {
+                text: answer,
+                type: 'received',
+                isLink: true,
+              };
+            } else {
+              message = {
+                text: answer,
+                type: 'received',
+                isLink: false,
+              };
+            }
+          }
+
+          this.chatFolders[this.currentFolderIndex].messages.unshift(message);
           this.isTyping = false;
           this.messageInput = '';
         },
@@ -89,32 +113,6 @@ editMessage(index: number) {
     this.isEditing = true;
     this.editIndex = index;
 }
-
-
-  sendMessage1() {
-    if (this.messageInput.trim()) {
-      this.chatFolders[this.currentFolderIndex].messages.unshift({
-        text: this.messageInput,
-        type: 'sent'
-      });
-
-      // Установить индикатор "печати" в true
-      this.isTyping = true;
-
-      // Имитация задержки сервера
-      setTimeout(() => {
-        // После задержки добавляем ответ
-        this.chatFolders[this.currentFolderIndex].messages.unshift({
-          text: this.messageInput, // Ответ - это то же самое сообщение
-          type: 'received'
-        });
-
-        // Скрыть индикатор "печати"
-        this.isTyping = false;
-        this.messageInput = ''; // Сбросить ввод после отправки
-      }, 2000); // 2 секунды задержки
-    }
-  }
 
   openFolder(index: number) {
     this.currentFolderIndex = index; // Установить текущую папку

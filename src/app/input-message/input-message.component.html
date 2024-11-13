@@ -25,10 +25,13 @@
                     Задавайте вопросы нашему боту
                 </div>
                 <div *ngIf="isTyping" class="typing-indicator">Bot думает...</div>
-                <div *ngFor="let message of chatFolders[currentFolderIndex].messages; let i = index" 
+                <div *ngFor="let message of chatFolders[currentFolderIndex].messages; let i = index"
                     class="message-container"
                     [ngClass]="message.type">
-                    <div class="message">
+                    <div class="message" *ngIf="message.isLink">
+                        <a [href]="message.text" target="_blank" class="custom-link">{{ message.text }}</a>
+                    </div>
+                    <div class="message" *ngIf="!message.isLink">
                         {{ message.text }}
                     </div>
                     <ui5-button class="edit-button" icon="edit" *ngIf="message.type === 'sent'" (click)="editMessage(i)"></ui5-button>

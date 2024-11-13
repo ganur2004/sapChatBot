@@ -5,8 +5,9 @@ applications:
     path: ./
     disk_quota: 1024M
     buildpacks:
-      - nodejs_buildpack
+      - staticfile_buildpack
     random-route: true
-    commands:
-      - npm install  # Устанавливаем зависимости
-      - ng serve
+    services:
+      - destination_service
+      - uaa_service
+      - connectivity_service
