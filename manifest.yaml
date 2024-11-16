@@ -7,7 +7,3 @@ applications:
     buildpacks:
       - staticfile_buildpack
     random-route: true
-    services:
-      - destination_service
-      - uaa_service
-      - connectivity_service

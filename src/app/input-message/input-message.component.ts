@@ -70,7 +70,6 @@ export class InputMessageComponent implements OnInit {
 
       this.apiService.sendRequest(this.messageInput).subscribe(
         response => {
-          console.log(response);
           const answer = response.answer;
 
           let message: Message = {

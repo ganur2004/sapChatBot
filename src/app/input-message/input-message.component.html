@@ -2,12 +2,12 @@
     <div class="tool-layout">
         <ui5-shellbar primary-title="Chat Bot">
             <img slot="logo" src="https://sap.github.io/ui5-webcomponents/images/sap-logo-svg.svg" />
-            <ui5-button icon="menu" slot="startButton" id="toggle" (click)="toggleSidenav()"></ui5-button>
+<!--            <ui5-button icon="menu" slot="startButton" id="toggle" (click)="toggleSidenav()"></ui5-button>-->
             <ui5-avatar slot="profile">
-                <img src="https://sap.github.io/ui5-webcomponents/images/avatars/man_avatar_2.png" />
+                <ui5-avatar icon="employee" size="XS"></ui5-avatar>
             </ui5-avatar>
             <ui5-shellbar-item icon="edit" text="New chat" title="New chat" (click)="createNewChatFolder()"></ui5-shellbar-item>
-            <ui5-shellbar-item icon="action-settings" text="Settings" title="Settings"></ui5-shellbar-item>
+<!--            <ui5-shellbar-item icon="action-settings" text="Settings" title="Settings"></ui5-shellbar-item>-->
         </ui5-shellbar>
         <!-- <ui5-side-navigation [attr.collapsed]="isCollapsed ? true : null">
             <ui5-side-navigation-item
@@ -39,7 +39,7 @@
             </div>
             <div class="input-field">
                 <div class="input-field-child">
-                    <ui5-textarea [(ngModel)]="messageInput" growing growing-max-rows="5" placeholder="Enter new rows..."></ui5-textarea>
+                    <ui5-textarea [(ngModel)]="messageInput" (keydown.enter)="sendMessage()" growing growing-max-rows="5" placeholder="Enter new rows..."></ui5-textarea>
                     <ui5-button icon="paper-plane" (click)="sendMessage()"></ui5-button>
                 </div>
             </div>
